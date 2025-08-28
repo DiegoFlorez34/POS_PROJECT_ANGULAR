@@ -1,5 +1,5 @@
 import { StickyDirection } from "@angular/cdk/table"
-
+//video 32 parte 1 
 export interface TableColumns<T> {
     label: string;
     cssLabel: string[];

@@ -1,23 +1,28 @@
+//video 32 parte 1 
+
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
-import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { getEsPaginatorIntl } from '@shared/paginator-intl/es-paginator-intl';
 import { DefaultService } from '@shared/services/default.service';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { scaleFadeIn400ms } from 'src/@vex/animations/scale-fade-in.animation';
 import { TableColumns, TableFooter } from '../../interface/list-table.interface';
-import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
+import { NgxSpinner, NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { AlertService } from '@shared/services/alert.service';
 import { startWith, switchMap } from 'rxjs/operators';
 import { DateAdapter } from 'angular-calendar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { IconModule } from '@visurel/iconify-angular';
 
 @Component({
   selector: 'app-list-table',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgxSpinnerModule, MatTableModule, MatSortModule, MatTooltipModule, MatIconModule, IconModule, MatPaginatorModule],
   templateUrl: './list-table.component.html',
   styleUrls: ['./list-table.component.scss'],
   animations: [scaleFadeIn400ms, fadeInUp400ms],
@@ -95,7 +100,7 @@ export class ListTableComponent<T> implements OnInit, AfterViewInit, OnChanges {
     this.sortChanges();
     this.paginatorChanges();
   }
-  
+
   async getDataByService() {
     this.changesGetInputs.pipe(
       startWith(""),
@@ -143,7 +148,7 @@ export class ListTableComponent<T> implements OnInit, AfterViewInit, OnChanges {
     })
   }
   paginatorChanges() {
-    this.paginator.page.subscribe(()=>{
+    this.paginator.page.subscribe(() => {
       this.changesGetInputs.emit();
     })
   }
