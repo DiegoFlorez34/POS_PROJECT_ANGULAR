@@ -12,6 +12,7 @@ import { CategoryRequest } from '../requests/category/category.request';
 import { ApiResponse } from '../commons/response.interface';
 import { Category } from '../responses/category/category.response';
 import { ReturnStatement } from '@angular/compiler';
+import { getIcon } from '@shared/functions/helpers';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,8 @@ export class CategoryService {
           e.badgeColor = 'text-gray bg-gray-light';
           break;
       }
+      e.icEdit= getIcon("icEdit","Editar Categoria",true,"edit");
+      e.icDelete= getIcon("icDelete","Eliminar Categoria",true,"remove");
     });
 
     return data;

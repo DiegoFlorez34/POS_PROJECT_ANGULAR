@@ -7,148 +7,167 @@ import icViewHeadLine from "@iconify/icons-ic/twotone-view-headline";
 import icLabel from "@iconify/icons-ic/twotone-label";
 import { filter } from "rxjs/operators";
 import { GenericValidators } from "@shared/validators/generic-validators";
-import icCalendarMonth  from "@iconify/icons-ic/twotone-calendar-today";
+import icCalendarMonth from "@iconify/icons-ic/twotone-calendar-today";
+import { TableColumns } from "src/app/core/interface/list-table.interface";
 
 
-const searchOptions=[
+const searchOptions = [
     {
-    label:"Nombre",
-    value:1,
-    placeholder:"buscar por nombre",
-    validation:[GenericValidators.defaultName],
-    validation_desc:"solo se permiten letras en esta busqueda",
-    min_length:2,
+        label: "Nombre",
+        value: 1,
+        placeholder: "buscar por nombre",
+        validation: [GenericValidators.defaultName],
+        validation_desc: "solo se permiten letras en esta busqueda",
+        min_length: 2,
     },
     {
-    label:"Descripcion",
-    value:2,
-    placeholder:"buscar por descipcion",
-    validation:[GenericValidators.defaultDescription],
-    validation_desc:"solo se permiten letras y numeros en esta busqueda",
-    min_length:2,
+        label: "Descripcion",
+        value: 2,
+        placeholder: "buscar por descipcion",
+        validation: [GenericValidators.defaultDescription],
+        validation_desc: "solo se permiten letras y numeros en esta busqueda",
+        min_length: 2,
     },
 
 ]
-const menuItems : ListTableMenu[]=[
+const menuItems: ListTableMenu[] = [
     {
-    type:"link",
-    id:"all",
-    icon: icViewHeadLine,
-    label:"Todos"
+        type: "link",
+        id: "all",
+        icon: icViewHeadLine,
+        label: "Todos"
     },
     {
-    type:"link",
-    id:"Activo",
-    value:1,
-    icon: icViewHeadLine,
-    label:"Activo",
-    classes:{
-        icon:"text-green"
-    }
-    },
-    {
-    type:"link",
-    id:"Inactivo",
-    value:0,
-    icon: icViewHeadLine,
-    label:"Inactivo",
-    classes:{
-        icon:"text-gray"
-    }
-    }
-]
-
-
-const tableColumns: TableColumn<Category>[] = [
-    {
-        label:"NOMBRE",
-        property:"name",
-        type:"text",
-        cssClasses:['font-medium','w10']
-
-    },
-    {
-        label:"DESCRIPCION",
-        property:"description",
-        type:"textTruncate",
-        cssClasses:['font-medium','w10']
-    },
-    {
-        label:"Fecha de creación",
-        property:"auditCreateDate",
-        type:"datetime",
-        cssClasses:['font-medium','w10']
-    },
-    {
-        label:"F. creación",
-        property:"auditCategory",
-        type:"datetime",
-        cssClasses:['font-medium','w10']
-    },
-     {
-        label:"ESTADO",
-        property:"stateCategory",
-        type:"badge",
-        cssClasses:['font-medium','w10']
-    },
-
-    {
-        label:"Acciones",
-        property:'menu',
-        type:"buttonGroup",
-        buttonItems:[{
-            buttonLabel:"EDITAR",
-            buttonAction:"edit",
-            buttonCondition : null,
-            disable: false
-        },
-        {
-            buttonLabel:"ELIMINAR",
-            buttonAction:"remove",
-            buttonCondition : null,
-            disable: false
+        type: "link",
+        id: "Activo",
+        value: 1,
+        icon: icViewHeadLine,
+        label: "Activo",
+        classes: {
+            icon: "text-green"
         }
-        
-    ],
-    cssClasses:['font-medium','w10']
+    },
+    {
+        type: "link",
+        id: "Inactivo",
+        value: 0,
+        icon: icViewHeadLine,
+        label: "Inactivo",
+        classes: {
+            icon: "text-gray"
+        }
     }
 ]
-const filters={
-    numfiter:0,
-    textFilter:"",
-    stateFilter:null,
-    startDate:null,
-    endDate:null
+
+
+const tableColumns: TableColumns<Category>[] = [
+    {
+        label: "NOMBRE",
+        cssLabel: ["fond-bold", "text-sm"],
+        property: "name",
+        cssProperty: ["font-semibold", "text-sm", "text-left"],
+        type: "text",
+        sticky: true,
+        sort: true,
+        sortProperty: "name",
+        visible: true,
+        download: true
+    },
+    {
+        label: "DESCRIPCION",
+        cssLabel: ["fond-bold", "text-sm"],
+        property: "description",
+        cssProperty: ["font-semibold", "text-sm", "text-left"],
+        type: "text",
+        sticky: false,
+        sort: true,
+        sortProperty: "description",
+        visible: true,
+        download: true
+    },
+    {
+        label: "F. CREACION",
+        cssLabel: ["fond-bold", "text-sm"],
+        property: "auditCreateDate",
+        cssProperty: ["font-semibold", "text-sm", "text-left"],
+        type: "datetime",
+        sticky: false,
+        sort: true,
+        visible: true,
+        download: true
+    },
+    {
+        label: "ESTADO",
+        cssLabel: ["fond-bold", "text-sm"],
+        property: "stateCategory",
+        cssProperty: ["font-semibold", "text-sm", "text-left"],
+        type: "badge",
+        sticky: false,
+        sort: false,
+        visible: true,
+        download: true
+    },
+    {
+        label: "",
+        cssLabel: [],
+        property: "icEdit",
+        cssProperty: [],
+        type: "icon",
+        action: "edit",
+        sticky: false,
+        sort: false,
+        visible: true,
+        download: false
+    },
+    {
+        label: "",
+        cssLabel: [],
+        property: "icDelete",
+        cssProperty: [],
+        type: "icon",
+        action: "remove",
+        sticky: false,
+        sort: false,
+        visible: true,
+        download: false
+    }
+]
+const filters = {
+    numfiter: 0,
+    textFilter: "",
+    stateFilter: null,
+    startDate: null,
+    endDate: null
 }
-const inputs ={
-    numfiter:0,
-    textFilter:"",
-    stateFilter:null,
-    startDate:null,
-    endDate:null
+const inputs = {
+    numfiter: 0,
+    textFilter: "",
+    stateFilter: null,
+    startDate: null,
+    endDate: null
 }
 
 
-export const componentSettings={
+export const componentSettings = {
     //icons
-    icCategory:icCategory,
-    icCalendarMonth:icCalendarMonth,
+    icCategory: icCategory,
+    icCalendarMonth: icCalendarMonth,
     //layaout settings
-    menuOpen:false,
+    menuOpen: false,
     //table settings
-    tableColumns:  tableColumns,
-    initialSort:"Id",
-    initialSortDir:"desc",
-    getInputs : inputs,
-    butttonLabel:"EDITAR",
-    butttonLabel2:"ELIMINAR",
+    tableColumns: tableColumns,
+    initialSort: "Id",
+    initialSortDir: "desc",
+    getInputs: inputs,
+    butttonLabel: "EDITAR",
+    butttonLabel2: "ELIMINAR",
 
     // filtros
-    menuItems:menuItems,
-    searchOptions:searchOptions,
-    filters_dates_active:false,
-    filters:filters,
-    datesFilterArray:['Fecha de creacion'],
-    columnsFilter: tableColumns.map((column)=> {return {label:column.label,property:column.property, type: column.type} })
+    menuItems: menuItems,
+    searchOptions: searchOptions,
+    filters_dates_active: false,
+    filters: filters,
+    datesFilterArray: ['Fecha de creacion'],
+    columnsFilter: tableColumns.map((column) => { return { label: column.label, property: column.property, type: column.type } })
 
 }

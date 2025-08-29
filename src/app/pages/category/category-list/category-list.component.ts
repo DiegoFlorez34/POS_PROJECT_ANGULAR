@@ -151,10 +151,11 @@ export class CategoryListComponent implements OnInit {
       cancelButtonText:'Cancelar',
       width:430
     }).then((result)=>{
-      this._categoryService.CategoryRemove(category.categoryId).subscribe(()=>{
-        this.formatGetInputs()
+      if(result.isConfirmed){
+          this._categoryService.CategoryRemove(category.categoryId).subscribe(()=>{
+        this.formatGetInputs()})
       }
-      )
+    
     })
 
   }
