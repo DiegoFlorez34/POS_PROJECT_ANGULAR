@@ -8,17 +8,19 @@ import icLabel from "@iconify/icons-ic/twotone-label";
 import { filter } from "rxjs/operators";
 import { GenericValidators } from "@shared/validators/generic-validators";
 import icCalendarMonth from "@iconify/icons-ic/twotone-calendar-today";
-import { TableColumns } from "src/app/core/interface/list-table.interface";
+import { TableColumns } from "@shared/models/list-table.interface";
+import { SearchOptions } from "@shared/models/search-options-interface";
 
 
-const searchOptions = [
+const searchOptions :SearchOptions[] = [
     {
         label: "Nombre",
         value: 1,
         placeholder: "buscar por nombre",
         validation: [GenericValidators.defaultName],
         validation_desc: "solo se permiten letras en esta busqueda",
-        min_length: 2,
+        icon:"icName"
+
     },
     {
         label: "Descripcion",
@@ -26,7 +28,8 @@ const searchOptions = [
         placeholder: "buscar por descipcion",
         validation: [GenericValidators.defaultDescription],
         validation_desc: "solo se permiten letras y numeros en esta busqueda",
-        min_length: 2,
+        icon:"icDescription"
+  
     },
 
 ]

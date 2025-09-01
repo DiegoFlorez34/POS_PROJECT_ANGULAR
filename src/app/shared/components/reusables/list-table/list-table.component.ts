@@ -10,7 +10,7 @@ import { getEsPaginatorIntl } from '@shared/paginator-intl/es-paginator-intl';
 import { DefaultService } from '@shared/services/default.service';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { scaleFadeIn400ms } from 'src/@vex/animations/scale-fade-in.animation';
-import { TableColumns, TableFooter } from '../../interface/list-table.interface';
+
 import { NgxSpinner, NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { AlertService } from '@shared/services/alert.service';
 import { startWith, switchMap } from 'rxjs/operators';
@@ -18,6 +18,7 @@ import { DateAdapter } from 'angular-calendar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { IconModule } from '@visurel/iconify-angular';
+import { TableColumns, TableFooter } from '@shared/models/list-table.interface';
 
 @Component({
   selector: 'app-list-table',
