@@ -4,9 +4,9 @@ import { fadeInRight400ms } from 'src/@vex/animations/fade-in-right.animation';
 import { scaleFadeIn400ms } from 'src/@vex/animations/scale-fade-in.animation';
 import { scaleIn400ms } from 'src/@vex/animations/scale-in.animation';
 import { stagger40ms } from 'src/@vex/animations/stagger.animation';
-import { CategoryService } from 'src/app/services/category.service';
+import { CategoryService } from 'src/app/pages/category/services/category.service';
 import { componentSettings } from './category-list-config';
-import { CategoryApi } from 'src/app/responses/category/category.response';
+import { CategoryApi } from 'src/app/pages/category/models/category.response.interface';
 import { DatesFilter } from '@shared/functions/actions';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CategoryManageComponent } from '../category-manage/category-manage.component';
@@ -42,9 +42,8 @@ export class CategoryListComponent implements OnInit {
   }
 
   
-  setData(data: any =null){
-    this.component.filters.stateFilter= data.value
-    this.component.menuOpen=false
+  setData(value : number){
+    this.component.filters.stateFilter= value
     this.formatGetInputs()
   }
   search(data :FiltersBox){

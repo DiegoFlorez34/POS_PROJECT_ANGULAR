@@ -1,10 +1,10 @@
 import { Component, Inject, inject, OnInit, ValueProvider } from '@angular/core';
 import icClose from '@iconify/icons-ic/twotone-close';
-import * as configs from '../../../../static-data/configs';
+import * as configs from '../../../../../static-data/configs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AlertService } from '@shared/services/alert.service';
-import { CategoryService } from 'src/app/services/category.service';
+import { CategoryService } from 'src/app/pages/category/services/category.service';
 import { publish } from 'rxjs/operators';
 import { endOfISOWeek } from 'date-fns';
 
