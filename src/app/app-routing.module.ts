@@ -3,6 +3,8 @@ import { PreloadAllModules, RouterModule } from '@angular/router';
 import { VexRoutes } from 'src/@vex/interfaces/vex-route.interface';
 import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AuthGuard } from '@shared/guards/auth.guard';
+import { tr } from 'date-fns/locale';
 
 const childrenRoutes: VexRoutes = [
   {
@@ -39,9 +41,17 @@ const routes: VexRoutes = [
     pathMatch: 'full'
   },
   {
+    path:'login',
+    loadChildren:()=>import('./pages/auth/auth.module').then((m)=>m.AuthModule),
+    data:{
+      containerEnabled:true
+    }
+  },
+  {
     path: '',
     component: CustomLayoutComponent,
     children: childrenRoutes,
+    canActivate:[AuthGuard]
   }
 ];
 
