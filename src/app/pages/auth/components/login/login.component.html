@@ -6,6 +6,8 @@
         </div>
         <h2>Iniciar Sesion</h2>
         <h3>Bienvenido a tu sistema de ventas</h3>
+        <app-login-google></app-login-google>
+        <br>
         <form [formGroup]="form" class="login-form" (ngSubmit)="Login()">
             <mat-form-field appearance="outline" class="text-box">
                 <mat-label>Usuario</mat-label>

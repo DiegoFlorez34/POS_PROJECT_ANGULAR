@@ -1,0 +1,56 @@
+import { Component, NgZone, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
+import {CredentialResponse, PromptMomentNotification} from 'google-one-tap';
+import { AuthService } from '../../services/auth.service';
+import { ApiResponse } from 'src/app/commons/response.interface';
+declare var window:any;
+declare var google:any;
+@Component({
+  selector: 'app-login-google',
+  templateUrl: './login-google.component.html',
+  styleUrls: ['./login-google.component.scss']
+})
+export class LoginGoogleComponent implements OnInit {
+
+  constructor(
+    private router:Router,
+    private ngZone: NgZone,
+    private authService:AuthService
+
+  ) { }
+
+  ngOnInit(): void {
+    window.onGoogleLibraryLoad = () => {
+      google.accounts.id.initialize({
+        client_id:'',
+        callback:this.handleCredentialResponse.bind(this),
+        auto_select:false,
+        cancel_on_tap_outside:false
+      });
+      google.accounts.id.renderButton(document.getElementById("buttonGoogle"),{
+        theme:'filled-blue',
+        type:'standard',
+        size:'large',
+        text:'signin_with',
+        shape:'pill',
+        width:300
+
+      })
+      google.accounts.id.prompt((notification:PromptMomentNotification)=>{})
+    }
+  }
+  async handleCredentialResponse(response:CredentialResponse){
+    await this.authService.loginWithGoogle(response.credential).subscribe(
+      (resp:ApiResponse)=>{
+        if(resp.isSuccess){
+          //localStorage.setItem("token",resp.data)
+          this.ngZone.run(()=>{
+            this.router.navigate(['/'])
+          })
+        }
+      },(error)=>{
+        console.log(error)
+      }
+    );
+  }
+}

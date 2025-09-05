@@ -29,10 +29,28 @@ export class AuthService {
       map((resp: ApiResponse) => {
         if (resp.isSuccess) {
           localStorage.setItem("token", JSON.stringify(resp.data))
-          this.user.next(resp.data)
+          this.user.next(resp.data);
         }
         return resp;
       })
     )
   }
+
+  loginWithGoogle(credential:string):Observable<ApiResponse>{
+    const requestUrl = `${env.api}${endpoint.LOGIN_GOOGLE}`;
+    return this.http.post<ApiResponse>(requestUrl,JSON.stringify(credential),httpOptions).pipe(
+      map((resp:ApiResponse)=>{
+        if(resp.isSuccess){
+          localStorage.setItem("token", JSON.stringify(resp.data))
+          this.user.next(resp.data);
+        }
+    return resp;
+      })
+    );
+
+
+  }
+
 }
+
+
