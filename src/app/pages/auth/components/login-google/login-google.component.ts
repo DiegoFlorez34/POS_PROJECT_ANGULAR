@@ -3,6 +3,7 @@ import { Router} from '@angular/router';
 import {CredentialResponse, PromptMomentNotification} from 'google-one-tap';
 import { AuthService } from '../../services/auth.service';
 import { ApiResponse } from 'src/app/commons/response.interface';
+import { environment } from 'src/environments/environment';
 declare var window:any;
 declare var google:any;
 @Component({
@@ -18,11 +19,11 @@ export class LoginGoogleComponent implements OnInit {
     private authService:AuthService
 
   ) { }
-
+  private clientId= environment.clientId;
   ngOnInit(): void {
     window.onGoogleLibraryLoad = () => {
       google.accounts.id.initialize({
-        client_id:'',
+        client_id:this.clientId,
         callback:this.handleCredentialResponse.bind(this),
         auto_select:false,
         cancel_on_tap_outside:false

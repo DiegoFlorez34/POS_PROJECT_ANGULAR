@@ -11,10 +11,10 @@
         <form [formGroup]="form" class="login-form" (ngSubmit)="Login()">
             <mat-form-field appearance="outline" class="text-box">
                 <mat-label>Usuario</mat-label>
-                <input matInput formControlName="username">
-                <mat-error *ngIf="form.get('username')
+                <input matInput formControlName="email">
+                <mat-error *ngIf="form.get('email')
                 .hasError('required')">
-                    El usuario es requerido
+                    El email es requerido
                 </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="text-box">

@@ -11,7 +11,7 @@ export const endpoint={
     CATEGORY_REMOVE:'Category/Remove/',
 
     //AUTH_MODULE
-    GENERATE_TOKEN:'User/Generate/Token',
+    LOGIN:'Auth/Login',
 
     LOGIN_GOOGLE:'Auth/LoginWithGoogle'
 }
