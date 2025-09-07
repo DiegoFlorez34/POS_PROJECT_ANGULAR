@@ -41,7 +41,7 @@ export class LoginGoogleComponent implements OnInit {
     }
   }
   async handleCredentialResponse(response:CredentialResponse){
-    await this.authService.loginWithGoogle(response.credential).subscribe(
+    await this.authService.loginWithGoogle(response.credential,"Externo").subscribe(
       (resp:ApiResponse)=>{
         if(resp.isSuccess){
           //localStorage.setItem("token",resp.data)

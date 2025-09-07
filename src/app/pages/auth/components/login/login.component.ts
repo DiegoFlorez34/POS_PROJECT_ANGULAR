@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IconsService } from '@shared/services/icons.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { stringToKeyValue } from '@angular/flex-layout/extended/style/style-transforms';
 
 
 @Component({
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
         controls.markAllAsTouched();
       })
     }
-    this.authService.login(this.form.value).subscribe((res)=>{
+    this.authService.login(this.form.value, "Interno").subscribe((res)=>{
       if(res.isSuccess){
         this.router.navigate(["/"])
       }
