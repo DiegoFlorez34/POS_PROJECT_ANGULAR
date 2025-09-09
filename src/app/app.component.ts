@@ -1,17 +1,18 @@
-import { Component, Inject, LOCALE_ID, Renderer2 } from '@angular/core';
-import { ConfigService } from '../@vex/services/config.service';
-import { Settings } from 'luxon';
-import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, LOCALE_ID, Renderer2 } from '@angular/core';
+import { Settings } from 'luxon';
+import { ConfigService } from '../@vex/services/config.service';
 import { NavigationService } from '../@vex/services/navigation.service';
 
-import icDashboard from '@iconify/icons-ic/twotone-dashboard';
+
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Style, StyleService } from '../@vex/services/style.service';
 import { ConfigName } from '../@vex/interfaces/config-name.model';
-import icCategory from '@iconify/icons-ic/twotone-category';
+import { Style, StyleService } from '../@vex/services/style.service';
+
+import { IconsService } from '@shared/services/icons.service';
 
 @Component({
   selector: 'vex-root',
@@ -66,14 +67,20 @@ export class AppComponent {
         type: 'link',
         label: 'Estadísticas',
         route: 'estadisticas',
-        icon: icDashboard
+        icon: IconsService.prototype.getIcon("icDashboard")
       },
       {
          type: 'link',
         label: 'Categorias',
         route: 'categorias',
-        icon: icCategory
-      }
+        icon: IconsService.prototype.getIcon("icCategory")
+      },
+      {
+         type: 'link',
+        label: 'Proveedores',
+        route: 'proveedores',
+        icon: IconsService.prototype.getIcon("icProvider")
+      },
     ];
   }
 }

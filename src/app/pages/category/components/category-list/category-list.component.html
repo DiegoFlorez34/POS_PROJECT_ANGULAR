@@ -8,7 +8,8 @@
         <div class="flex items-center justify-end w-full">
                <app-search-box-multiple 
                     [searchOptions]="component.searchOptions"
-                    (search)="search($event)">
+                    (search)="search($event)"
+                    [currentValue]="component.filters.textFilter">
                </app-search-box-multiple>
 
                 <div>

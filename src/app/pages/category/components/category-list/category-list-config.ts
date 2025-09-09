@@ -11,6 +11,7 @@ import icCalendarMonth from "@iconify/icons-ic/twotone-calendar-today";
 import { TableColumns } from "@shared/models/list-table.interface";
 import { SearchOptions } from "@shared/models/search-options-interface";
 import { MenuItems } from "@shared/models/menu-items.interface";
+import { IconsService } from "@shared/services/icons.service";
 
 
 const searchOptions :SearchOptions[] = [
@@ -34,18 +35,19 @@ const searchOptions :SearchOptions[] = [
     },
 
 ]
+
 const menuItems: MenuItems[] = [
     {
         type: "link",
         id: "all",
-        icon: icViewHeadLine,
+        icon: IconsService.prototype.getIcon("icViewHeadLine"),
         label: "Todos"
     },
     {
         type: "link",
         id: "Activo",
         value: 1,
-        icon: icViewHeadLine,
+        icon: IconsService.prototype.getIcon("icLabel"),
         label: "Activo",
         class: {
             icon: "text-green"
@@ -55,13 +57,13 @@ const menuItems: MenuItems[] = [
         type: "link",
         id: "Inactivo",
         value: 0,
-        icon: icViewHeadLine,
+        icon: IconsService.prototype.getIcon("icLabel"),
         label: "Inactivo",
         class: {
             icon: "text-gray"
         }
     }
-]
+];
 
 
 const tableColumns: TableColumns<Category>[] = [

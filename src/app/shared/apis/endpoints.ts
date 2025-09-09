@@ -10,10 +10,13 @@ export const endpoint={
     CATEGORY_EDIT:'Category/Edit/',
     CATEGORY_REMOVE:'Category/Remove/',
 
+
     //AUTH_MODULE
     LOGIN:'Auth/Login',
 
-    LOGIN_GOOGLE:'Auth/LoginWithGoogle'
+    LOGIN_GOOGLE:'Auth/LoginWithGoogle',
+    //PROVIDER MODULE
+    LIST_PROVIDERS:"Provider",
 }
 
 
