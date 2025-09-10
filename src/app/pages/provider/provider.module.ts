@@ -7,11 +7,13 @@ import { ListTableComponent } from '@shared/components/reusables/list-table/list
 import { SearchBoxMultipleComponent } from '@shared/components/reusables/search-box-multiple/search-box-multiple.component';
 import { MenuComponent } from '@shared/components/reusables/menu/menu.component';
 import { ProviderListComponent } from './components/provider-list/provider-list.component';
+import { ProviderManageComponent } from './components/provider-manage/provider-manage.component';
 
 
 @NgModule({
   declarations: [
-    ProviderListComponent
+    ProviderListComponent,
+    ProviderManageComponent
   ],
   imports: [
     CommonModule,

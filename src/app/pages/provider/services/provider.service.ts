@@ -8,6 +8,7 @@ import { environment as env } from 'src/environments/environment';
 import { ProviderResponse } from '../models/provider-response.interface';
 import { getIcon } from '@shared/functions/helpers';
 import { tr } from 'date-fns/locale';
+import { ProviderRequest } from '../models/provider-request.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -49,4 +50,16 @@ export class ProviderService {
 
 
   }
+  providerRegister(provider:ProviderRequest):Observable<BaseResponse>
+  {
+    const requestUrl = `${env.api}${endpoint.PROVIDER_REGISTER}`;
+    return this._http.post(requestUrl,provider).pipe(
+      map((resp:BaseResponse)=>{
+        return resp;
+      })
+    )
+
+  }
+
+
 }

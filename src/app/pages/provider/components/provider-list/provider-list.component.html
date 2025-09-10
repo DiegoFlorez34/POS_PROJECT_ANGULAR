@@ -26,7 +26,8 @@
                     [items]="component.menuItems" 
                     [buttonShow]="true" 
                     buttonLabel="AGREGAR"
-                    (filterChange)="setMenu($event)">
+                    (filterChange)="setMenu($event)"
+                    (buttonClick)="openDialogRegister()">
                 </app-menu>
 
 

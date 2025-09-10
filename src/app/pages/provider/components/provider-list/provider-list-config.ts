@@ -194,14 +194,16 @@ const filters={
     textFilter:"",
     stateFilter:null,
     startDate:"",
-    endDate:""
+    endDate:"",
+    refresh:false,
 }
 const getInputs={
     numFilter:0,
     textFilter:"",
     stateFilter:null,
     startDate:"",
-    endDate:""
+    endDate:"",
+     refresh:false,
 }
 
 export const componentSettings={
