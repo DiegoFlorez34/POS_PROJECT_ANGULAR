@@ -22,20 +22,21 @@ export function toBase64(file: File) {
         reader.onerror = (error) => reject(error)
     })
 }
-export function getIcon(iconName: string, tooltip: string, permission: boolean, action?: string) {
+export function getIcon(
+    iconName: string,
+     tooltip: string, 
+     permission: boolean) {
     let generalCss = "flex justify-center items-center p-1.5 s-fit rounded-full ";
     let iconObj = {
         tooltip: null,
         icon: null,
-        css: null,
-        action: null
+        css: null
     }
     if (permission) {
         iconObj = {
             tooltip,
             icon: IconsService.prototype.getIcon(iconName),
-            css: generalCss + COLORS_BADGE.main,
-            action: action ? action : null
+            css: generalCss + COLORS_BADGE.main
         }
         if (["icEdit"].includes(iconName)) {
             iconObj.css = generalCss + COLORS_BADGE.main
