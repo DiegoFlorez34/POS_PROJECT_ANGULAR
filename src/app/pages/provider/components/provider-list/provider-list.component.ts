@@ -7,8 +7,10 @@ import { ProviderService } from '../../services/provider.service';
 import { componentSettings } from './provider-list-config';
 import { FiltersBox } from '@shared/models/search-options-interface';
 import { ThisReceiver } from '@angular/compiler';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ProviderManageComponent } from '../provider-manage/provider-manage.component';
+import { ProviderResponse } from '../../models/provider-response.interface';
+import { RowClick } from '@shared/models/row-click.interface';
 
 @Component({
   selector: 'vex-provider-list',
@@ -68,5 +70,44 @@ export class ProviderListComponent implements OnInit {
   setGetInputsProviders(refresh:boolean){
     this.component.filters.refresh=refresh;
     this.formatGetInputs();
+  }
+
+
+
+  rowClick(rowClick:RowClick<ProviderResponse>){
+    
+    let action = rowClick.action;
+    let provider = rowClick.row;
+
+    switch(action){
+      case "edit":
+        this.providerEdit(provider);
+        break;
+      case "remove":
+        this.providerRemove(provider);
+        break;
+    }
+    return false;
+  }
+
+  providerEdit(providerData:ProviderResponse){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data= providerData;
+    this._dialog.open(ProviderManageComponent,{
+      data:dialogConfig,
+      disableClose:true,
+      width:"400px",
+    })
+    .afterClosed().subscribe((resp)=>{
+      if(resp){
+        this.setGetInputsProviders(true);
+      }
+    })
+  }
+
+
+
+  providerRemove(provider:ProviderResponse){
+
   }
 }

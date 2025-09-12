@@ -17,9 +17,13 @@ export const endpoint={
     LOGIN_GOOGLE:'Auth/LoginWithGoogle',
     //PROVIDER MODULE
     LIST_PROVIDERS:"Provider",
+   
+    PROVIDER_REGISTER:"Provider/Register",
+    PROVIDER_EDIT:"Provider/Edit/",
+    PROVIDER_BY_ID:"Provider/",
+
     //Document Module
     LIST_DOCUMENT_TYPES :"DocumentType",
-    PROVIDER_REGISTER:"Provider/Register",
 
 }
 
