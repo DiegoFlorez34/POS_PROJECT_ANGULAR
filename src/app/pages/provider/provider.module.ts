@@ -8,6 +8,8 @@ import { SearchBoxMultipleComponent } from '@shared/components/reusables/search-
 import { MenuComponent } from '@shared/components/reusables/menu/menu.component';
 import { ProviderListComponent } from './components/provider-list/provider-list.component';
 import { ProviderManageComponent } from './components/provider-manage/provider-manage.component';
+import { DownloadXslxService } from '@shared/services/download-xslx.service';
+import { ExportExelComponent } from '@shared/components/reusables/export-exel/export-exel.component';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { ProviderManageComponent } from './components/provider-manage/provider-m
     SharedModule,
     ListTableComponent,
     SearchBoxMultipleComponent,
-    MenuComponent
+    MenuComponent,
+    ExportExelComponent
   ]
 })
 export class ProviderModule { }

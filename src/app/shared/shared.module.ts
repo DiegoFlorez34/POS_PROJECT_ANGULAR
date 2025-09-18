@@ -10,7 +10,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { PageLayoutModule } from 'src/@vex/components/page-layout/page-layout.module';
 import { ListTableSimpleModule } from './components/list-table-simple/list-table-simple.module';
 import { SearchFilterModule } from './components/search-filter/search-filter.module';
-import { DownloadCsvModule } from './components/download-csv/download-csv.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -31,7 +30,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     PageLayoutModule,
     ListTableSimpleModule,
     SearchFilterModule,
-    DownloadCsvModule,
     NgxSpinnerModule
    
   ]

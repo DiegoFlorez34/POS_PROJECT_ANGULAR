@@ -15,6 +15,13 @@
                     [currentValue]="component.filters.textFilter">
                 </app-search-box-multiple>
             </div>
+            <div>
+                    <app-export-exel 
+                    [url]="getDownloadUrl" 
+                    [getInputs]="component.getInputs" 
+                    [filename]="component.filename">
+                    </app-export-exel>
+                </div>
         </div>
 
     </div>

@@ -15,6 +15,8 @@ import icProvider from "@iconify/icons-ic/twotone-group";
 
 import icCategory from '@iconify/icons-ic/twotone-category';
 import icDashboard from '@iconify/icons-ic/twotone-dashboard';
+
+import icCloudDownload from '@iconify/icons-ic/twotone-cloud-download';
 @Injectable({
   providedIn: 'root'
 })
@@ -64,6 +66,9 @@ export class IconsService {
     }
     if(icon == "icCategory"){
       return  icCategory;
+    }
+    if(icon =="icCloudDownload"){
+      return icCloudDownload;
     }
   }
 }

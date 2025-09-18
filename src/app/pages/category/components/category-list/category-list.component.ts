@@ -58,37 +58,26 @@ export class CategoryListComponent implements OnInit {
     DatesFilter(this)
   }
 
-
   formatGetInputs(){
-    let inputs={
-      numFilter:0,
-      textFilter:"",
-      stateFilter:null,
-      startdate:null,
-      enddate:null
-    
+    let str="";
+    if(this.component.filters.textFilter != null){
+      str += `&numFilter=${this.component.filters.numFilter}
+      &textFilter=${this.component.filters.textFilter}`; 
     }
-
-    if(this.component.filters.numFilter!=""){
-        inputs.numFilter=this.component.filters.numFilter
-        inputs.textFilter=this.component.filters.textFilter
-    }
-
-    if(this.component.filters.stateFilter!= null){
-      inputs.stateFilter=this.component.filters.stateFilter
-    }
-    if(this.component.filters.startDate!= null){
-      inputs.startdate=this.component.filters.startDate
+    if(this.component.filters.stateFilter != null){
+      str += `&stateFilter=${this.component.filters.stateFilter}`;
     }
     if(this.component.filters.startDate!= "" && this.component.filters.endDate!= "" ){
-      inputs.startdate= this.component.filters.startDate
-      inputs.enddate= this.component.filters.endDate
+      str += `&starDate=${this.component.filters.starDate}`;
+      str += `&endDate=${this.component.filters.endDate}`;
     }
-
-
-    this.component.getInputs=inputs
-
-    }
+    if(this.component.filters.refresh){
+      let random = Math.random();
+      str += `&refresh=${random}`
+      this.component.filters.refresh=false;
+    } 
+    this.component.getInputs=str;
+  }
   openDialogRegister(){
     this._dialog.open(CategoryManageComponent,{
       disableClose: true,
@@ -96,7 +85,7 @@ export class CategoryListComponent implements OnInit {
     }).afterClosed().subscribe(
       (res)=>{
         if(res){
-          this.formatGetInputs()
+          this.setGetInputsCategory(true);
         }
       }
     )
@@ -130,7 +119,7 @@ export class CategoryListComponent implements OnInit {
     })
     dialogRef.afterClosed().subscribe((res)=>{
         if(res){
-          this.formatGetInputs()
+          this.setGetInputsCategory(true)
         }
       }
     )
@@ -153,12 +142,21 @@ export class CategoryListComponent implements OnInit {
     }).then((result)=>{
       if(result.isConfirmed){
           this._categoryService.CategoryRemove(category.categoryId).subscribe(()=>{
-        this.formatGetInputs()})
+        this.setGetInputsCategory(true)})
       }
     
     })
 
   }
+   setGetInputsCategory(refresh:boolean){
+    this.component.filters.refresh=refresh;
+    this.formatGetInputs();
+  }
+
+  get getDownloadUrl(){
+    return `Category?Download=True`;
+  }
+  
 }
 
 

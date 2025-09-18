@@ -129,4 +129,7 @@ export class ProviderListComponent implements OnInit {
         })
     
   }
+   get getDownloadUrl(){
+    return `Provider?Download=True`;
+  }
 }

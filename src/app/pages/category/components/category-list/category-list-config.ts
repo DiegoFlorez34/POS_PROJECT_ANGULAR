@@ -143,15 +143,10 @@ const filters = {
     textFilter: "",
     stateFilter: null,
     startDate: null,
-    endDate: null
+    endDate: null,
+    refresh: false
 }
-const inputs = {
-    numfiter: 0,
-    textFilter: "",
-    stateFilter: null,
-    startDate: null,
-    endDate: null
-}
+const  getInputs:string="";
 
 
 export const componentSettings = {
@@ -164,7 +159,7 @@ export const componentSettings = {
     tableColumns: tableColumns,
     initialSort: "Id",
     initialSortDir: "desc",
-    getInputs: inputs,
+    getInputs,
     butttonLabel: "EDITAR",
     butttonLabel2: "ELIMINAR",
 
@@ -174,6 +169,6 @@ export const componentSettings = {
     filters_dates_active: false,
     filters: filters,
     datesFilterArray: ['Fecha de creacion'],
-    columnsFilter: tableColumns.map((column) => { return { label: column.label, property: column.property, type: column.type } })
+    filename:"Listado-de-categorias"
 
 }

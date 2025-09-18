@@ -24,6 +24,15 @@
                     </math-icon>
                     </button>
                 </div>
+                <div>
+                    <app-export-exel 
+                    [url]="getDownloadUrl" 
+                    [getInputs]="component.getInputs" 
+                    [filename]="component.filename">
+
+                    </app-export-exel>
+
+                </div>
         </div>
         </div>
 

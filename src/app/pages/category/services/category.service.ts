@@ -33,19 +33,9 @@ export class CategoryService {
     page,
     getInputs,
   ): Observable<BaseApiResponse>{
-    const requestUrl=`${env.api}${endpoint.LIST_CATEGORIES}`
-    const params: List_Category_Request= new List_Category_Request(
-      page,
-      order,
-      sort,
-      size,
-      getInputs.numFilter,
-      getInputs.textFilter,
-      getInputs.stateFilter,
-      getInputs.startdate,
-      getInputs.enddate
-    )
-    return this._http.post<BaseApiResponse>(requestUrl, params).pipe(
+    const requestUrl = `${env.api}${endpoint.LIST_CATEGORIES
+    }?records=${size}&sort=${sort}&order=${order}&numPage=${page + 1}${getInputs}`;
+    return this._http.get<BaseApiResponse>(requestUrl).pipe(
   map((data: BaseApiResponse) => {
     console.log("estado", data);
     
