@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { endpoint } from '@shared/apis/endpoints';
-import { BaseApiResponse, BaseResponse } from '@shared/models/base-api-response.interface';
+import {  BaseResponse } from '@shared/models/base-api-response.interface';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment as env } from 'src/environments/environment';
@@ -24,13 +24,13 @@ export class ProviderService {
     order: string, 
     page: number,
     getInputs: string
-  ): Observable<BaseApiResponse> {
+  ): Observable<BaseResponse> {
     const requestUrl = `${env.api}${endpoint.LIST_PROVIDERS
     }?records=${size}&sort=${sort}&order=${order}&numPage=${page + 1}${getInputs}`;
     console.log(requestUrl)
-    return this._http.get<BaseApiResponse>(requestUrl).pipe(
+    return this._http.get<BaseResponse>(requestUrl).pipe(
       map((resp) => {
-        resp.data.items.forEach((prov: ProviderResponse)=> {
+        resp.data.forEach((prov: ProviderResponse)=> {
           switch(prov.state){
             case 0:
               prov.badgeColor="text-gray bg-gray-light";

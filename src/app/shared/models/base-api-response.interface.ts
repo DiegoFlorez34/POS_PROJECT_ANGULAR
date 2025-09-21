@@ -1,11 +1,8 @@
 
-export interface BaseApiResponse{
-    data: any
-    totalRecords:number
-}
  export interface BaseResponse{
     isSuccess: boolean
     data: any,
+    totalRecords:number
     message: string
     errors: any
  }

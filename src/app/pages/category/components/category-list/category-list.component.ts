@@ -11,7 +11,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CategoryManageComponent } from '../category-manage/category-manage.component';
 import Swal from 'sweetalert2';
 import { FiltersBox, SearchOptions } from '@shared/models/search-options-interface';
-import { BaseApiResponse } from '@shared/models/base-api-response.interface';
+import { BaseResponse } from '@shared/models/base-api-response.interface';
 
 @Component({
   selector: 'vex-category-list',
@@ -107,9 +107,9 @@ export class CategoryListComponent implements OnInit {
     return false
   }
   //video 21
-  CategoryEdit(row : BaseApiResponse){
+  CategoryEdit(row : BaseResponse){
     const dialogConfig= new MatDialogConfig()
-    dialogConfig.data= row
+    dialogConfig.data= row.data
     
     let dialogRef = this._dialog.open(CategoryManageComponent, {
       data:dialogConfig,

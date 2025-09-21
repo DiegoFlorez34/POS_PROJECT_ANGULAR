@@ -13,7 +13,7 @@ import { CategoryRequest } from '../models/category.request.interface';
 import { Category } from '../models/category.response.interface';
 import { ReturnStatement } from '@angular/compiler';
 import { getIcon } from '@shared/functions/helpers';
-import { BaseApiResponse, BaseResponse } from '@shared/models/base-api-response.interface';
+import { BaseResponse } from '@shared/models/base-api-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -32,14 +32,14 @@ export class CategoryService {
     order,
     page,
     getInputs,
-  ): Observable<BaseApiResponse>{
+  ): Observable<BaseResponse>{
     const requestUrl = `${env.api}${endpoint.LIST_CATEGORIES
     }?records=${size}&sort=${sort}&order=${order}&numPage=${page + 1}${getInputs}`;
-    return this._http.get<BaseApiResponse>(requestUrl).pipe(
-  map((data: BaseApiResponse) => {
+    return this._http.get<BaseResponse>(requestUrl).pipe(
+  map((data: BaseResponse) => {
     console.log("estado", data);
     
-    data.data.items.forEach(function(e: any) {
+    data.data.forEach(function(e: any) {
       switch (e.state) {
         case 0:
           e.badgeColor = 'text-gray bg-gray-light';
