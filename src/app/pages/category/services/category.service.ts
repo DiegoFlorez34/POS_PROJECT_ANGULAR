@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 import { defaultThrottleConfig } from 'rxjs/internal/operators/throttle';
 import { CategoryRequest } from '../models/category.request.interface';
 
-import { Category } from '../models/category.response.interface';
+import { CategoryResponse } from '../models/category.response.interface';
 import { ReturnStatement } from '@angular/compiler';
 import { getIcon } from '@shared/functions/helpers';
 import { BaseResponse } from '@shared/models/base-api-response.interface';
@@ -39,7 +39,7 @@ export class CategoryService {
   map((data: BaseResponse) => {
     console.log("estado", data);
     
-    data.data.forEach(function(e: any) {
+    data.data.forEach(function(e: CategoryResponse) {
       switch (e.state) {
         case 0:
           e.badgeColor = 'text-gray bg-gray-light';
@@ -71,7 +71,7 @@ export class CategoryService {
     )
   }
   //video 21 
-  CategoryById(CategoryId:number): Observable<Category>{
+  CategoryById(CategoryId:number): Observable<CategoryResponse>{
     const requestUrl = `${env.api}${endpoint.CATEGORY_BY_ID}${CategoryId}`
     return this._http.get(requestUrl).pipe(
       map((resp: BaseResponse)=>{

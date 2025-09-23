@@ -1,5 +1,5 @@
 import { TableColumn } from "src/@vex/interfaces/table-column.interface";
-import { Category } from "src/app/pages/category/models/category.response.interface";
+import { CategoryResponse } from "src/app/pages/category/models/category.response.interface";
 import icCategory from "@iconify/icons-ic/twotone-category";
 import { LayoutStyleBuilder } from "@angular/flex-layout";
 import { ListTableMenu } from "src/app/commons/list-table-menu.interface";
@@ -66,7 +66,7 @@ const menuItems: MenuItems[] = [
 ];
 
 
-const tableColumns: TableColumns<Category>[] = [
+const tableColumns: TableColumns<CategoryResponse>[] = [
     {
         label: "NOMBRE",
         cssLabel: ["fond-bold", "text-sm"],

@@ -12,6 +12,7 @@ import { CategoryManageComponent } from '../category-manage/category-manage.comp
 import Swal from 'sweetalert2';
 import { FiltersBox, SearchOptions } from '@shared/models/search-options-interface';
 import { BaseResponse } from '@shared/models/base-api-response.interface';
+import { CategoryResponse } from '../../models/category.response.interface';
 
 @Component({
   selector: 'vex-category-list',
@@ -107,9 +108,9 @@ export class CategoryListComponent implements OnInit {
     return false
   }
   //video 21
-  CategoryEdit(row : BaseResponse){
+  CategoryEdit(row : CategoryResponse){
     const dialogConfig= new MatDialogConfig()
-    dialogConfig.data= row.data
+    dialogConfig.data= row
     
     let dialogRef = this._dialog.open(CategoryManageComponent, {
       data:dialogConfig,
